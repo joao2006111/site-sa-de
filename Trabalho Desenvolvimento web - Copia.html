@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Sistema de Gestão Hospitalar</title>  
+    <style>
+        
+        /* Começo do CSS */
+
+        body {
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f4f4; 
+        }
+
+        header {
+            background: #007BFF; 
+            color: white; 
+            padding: 10px 0; 
+            text-align: center; 
+        }
+
+        main {
+            padding: 20px; 
+        }
+
+        section {
+            margin: 20px 0; 
+            padding: 20px; 
+            background: white; 
+            border-radius: 5px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        form {
+            display: flex;
+            flex-direction: column; 
+        }
+
+        input, button {
+            margin: 5px 0; 
+            padding: 10px; 
+            border-radius: 5px; 
+        }
+
+        button {
+            background: #28a745; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+        }
+
+        button:hover {
+            background: #218838; 
+        }
+    </style>
+
+    <!-- Final do CSS -->
+
+
+    <!-- Começo do HTML -->
+
+</head>
+<body>
+    <header>
+        <h1>Sistema de Gestão Hospitalar SUS</h1> <!-- Título principal que será exibido no cabeçalho -->
+    </header>
+    <main>
+        <!-- Seção para adicionar um novo paciente -->
+        <section>
+            <h2>Adicionar Paciente</h2> <!-- Título da seção -->
+            <form id="patientForm"> <!-- Formulário para entrada de dados -->
+                <input type="text" id="patientName" placeholder="Nome do Paciente" required> <!-- Campo para o nome do paciente -->
+                <input type="text" id="patientAge" placeholder="Idade do Paciente" required> <!-- Campo para a idade do paciente -->
+                <input type="text" id="patientCondition" placeholder="Condição" required> <!-- Campo para a condição do paciente -->
+                <button type="submit">Adicionar Paciente</button> <!-- Botão para enviar o formulário -->
+            </form>
+        </section>
+        
+        <!-- Seção para exibir a lista de pacientes -->
+        <section>
+            <h2>Lista de Pacientes</h2> <!-- Título da seção de lista -->
+            <ul id="patientList"></ul> <!-- Lista não ordenada onde os pacientes serão exibidos -->
+        </section>
+    </main>
+
+    <!-- Final do HTML -->
+
+
+<!-- Começo do JavaScript -->
+    
+    <script>
+        // Adiciona um evento ao formulário para capturar o envio dos dados
+        document.getElementById('patientForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne que a página seja recarregada quando o formulário for enviado
+
+            // Captura os valores dos campos do formulário
+            const name = document.getElementById('patientName').value;
+            const age = document.getElementById('patientAge').value;
+            const condition = document.getElementById('patientCondition').value;
+
+            // Cria um novo item (li) na lista de pacientes
+            const patientList = document.getElementById('patientList'); // Referência à lista de pacientes
+            const listItem = document.createElement('li'); // Cria um novo item de lista (<li>)
+            listItem.textContent = `Nome: ${name}, Idade: ${age}, Condição: ${condition}`; // Adiciona o texto ao item de lista
+
+            // Adiciona o item à lista de pacientes
+            patientList.appendChild(listItem);
+
+            // Limpa os campos do formulário para o próximo paciente
+            document.getElementById('patientForm').reset(); 
+        });
+    </script>
+
+    <!-- Final do JavaScript -->
+
+</body>
+</html>
